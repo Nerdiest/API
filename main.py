@@ -24,4 +24,4 @@ def home():
     return "<img src='https://media4.giphy.com/media/8abAbOrQ9rvLG/200.gif' style='width:100%'>"
 
 
-app.run(host=config.server['host'])
+app.run(host=config.server['host'], ssl_context='adhoc')
