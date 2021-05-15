@@ -1,10 +1,11 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request
+from flask_cors import CORS, cross_origin
 import config
 app = Flask(__name__)
 app.config["DEBUG"] = config.server["debug"]
+CORS(app)
 
-
-@app.route('/api/v1/tools', methods=['POST'])
+@app.route('/v1/tools', methods=['POST'])
 def handle():
     from handler import Handler
     data = request.get_json()
@@ -23,4 +24,4 @@ def home():
     return "<img src='https://media4.giphy.com/media/8abAbOrQ9rvLG/200.gif' style='width:100%'>"
 
 
-app.run()
+app.run(host=config.server['host'])
